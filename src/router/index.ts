@@ -1,31 +1,58 @@
 // src/router/index.ts
-import { createRouter, createWebHistory } from 'vue-router';
-import Page1 from '../views/Page1.vue';
-import Page2 from '../views/Page2.vue';
-// import Page3 from '../components/Page3.vue';
+import { createRouter, createWebHistory, RouteRecordRaw, NavigationGuardNext, RouteLocationNormalized } from 'vue-router'
+import Layout from '@/layouts/index.vue'
 
-const routes = [
-    {
-        path: '/',
-        redirect: '/page1'  // 默认重定向到页面1
-    },
-    {
-        path: '/page1',
-        component: Page1
-    },
-    {
-        path: '/page2',
-        component: Page2
-    },
-    // {
-    //     path: '/page3',
-    //     component: Page3
-    // }
-];
+const routes: Array<RouteRecordRaw> = [
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('@/views/login/index.vue'),
+    meta: { title: '登录', hidden: true }
+  },
+  {
+    path: '/',
+    component: Layout,
+    redirect: '/dashboard',
+    children: [
+      {
+        path: 'dashboard',
+        name: 'Dashboard',
+        component: () => import('@/views/dashboard/index.vue'),
+        meta: { title: '首页', icon: 'dashboard' }
+      }
+    ]
+  },
+  {
+    path: '/system',
+    component: Layout,
+    meta: { title: '系统管理', icon: 'setting' },
+    children: [
+      {
+        path: 'user',
+        name: 'User',
+        component: () => import('@/views/system/user/index.vue'),
+        meta: { title: '用户管理' }
+      }
+    ]
+  }
+]
 
 const router = createRouter({
-    history: createWebHistory(),
-    routes
-});
+  history: createWebHistory(),
+  routes
+})
 
-export default router;
+router.beforeEach((
+  to: RouteLocationNormalized,
+  from: RouteLocationNormalized,
+  next: NavigationGuardNext
+) => {
+  const token = localStorage.getItem('token')
+  if (to.path !== '/login' && !token) {
+    next('/login')
+  } else {
+    next()
+  }
+})
+
+export default router
