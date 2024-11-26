@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { login, getUserInfo } from '@/api/user'
-import type { ResponseData } from '@/types'
+//import type { ResponseData } from '@/types'
 
 interface UserState {
   token: string
@@ -36,7 +36,7 @@ export const useUserStore = defineStore({
     async getUserInfo() {
       try {
         const { data } = await getUserInfo()
-        this.userInfo = data
+        this.userInfo = data.data
         return Promise.resolve(data)
       } catch (error) {
         return Promise.reject(error)
