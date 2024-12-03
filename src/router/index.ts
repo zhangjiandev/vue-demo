@@ -34,6 +34,19 @@ const routes: Array<RouteRecordRaw> = [
         meta: { title: '用户管理' }
       }
     ]
+  },
+  {
+    path: '/demos',
+    component: Layout,
+    meta: { title: 'demos' },
+    children: [
+      {
+        path: 'dragAndDrop',
+        name: 'dragAndDrop',
+        component: () => import('@/views/demos/dragAndDrop/index.vue'),
+        meta: { title: 'dragAndDrop' }
+      }
+    ]
   }
 ]
 
