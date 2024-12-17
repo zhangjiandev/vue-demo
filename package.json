@@ -12,6 +12,7 @@
     "axios": "^1.6.2",
     "element-plus": "^2.8.7",
     "leaflet": "^1.9.4",
+    "leaflet.heat": "^0.2.0",
     "path-browserify": "^1.0.1",
     "pinia": "^2.1.7",
     "vue": "^3.3.8",
