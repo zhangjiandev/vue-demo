@@ -25,7 +25,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/system',
     component: Layout,
-    meta: { title: '系统管理', icon: 'setting' },
+    meta: { title: '系统管理' },
     children: [
       {
         path: 'user',
@@ -45,6 +45,12 @@ const routes: Array<RouteRecordRaw> = [
         name: 'dragAndDrop',
         component: () => import('@/views/demos/dragAndDrop/index.vue'),
         meta: { title: 'dragAndDrop' }
+      },
+      {
+        path: 'map',
+        name: 'map',
+        component: () => import('@/views/demos/map/index.vue'),
+        meta: { title: 'map' }
       }
     ]
   }
