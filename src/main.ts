@@ -7,6 +7,7 @@ import 'element-plus/dist/index.css';
 import './assets/styles/index.scss';
 import L from 'leaflet';  // 引入 Leaflet
 import 'leaflet/dist/leaflet.css'; // 导入 Leaflet 样式
+import 'cesium/Widgets/widgets.css';
 
 // 开发环境下使用 mock
 if (import.meta.env.DEV) {

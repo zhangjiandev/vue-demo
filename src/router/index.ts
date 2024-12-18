@@ -51,6 +51,12 @@ const routes: Array<RouteRecordRaw> = [
         name: 'map',
         component: () => import('@/views/demos/map/index.vue'),
         meta: { title: 'map' }
+      },
+      {
+        path: 'cesium',
+        name: 'cesium',
+        component: () => import('@/views/demos/cesium/index.vue'),
+        meta: { title: 'cesium' }
       }
     ]
   }
