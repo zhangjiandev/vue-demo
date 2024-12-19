@@ -11,6 +11,7 @@ import 'cesium/Widgets/widgets.css'; // 引入 Cesium 样式
 onMounted(() => {
   // 设置 Cesium 的静态资源路径
   window.CESIUM_BASE_URL = '/cesium/';
+  Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJiNDljOGNlMS1mNTllLTRkODMtYTU1My1lMzhhMDZiZWZlZDUiLCJpZCI6MjYzMzkxLCJpYXQiOjE3MzQ1MzI2NjF9.FOibYRtbEs79EVt6ck2toEjfCFWPe99mjWNXqFrNoIU';
 
   // const viewer = new Cesium.Viewer('cesiumContainer', {
   //   imageryProvider: new Cesium.UrlTemplateImageryProvider({

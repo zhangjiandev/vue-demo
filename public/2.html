@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cesium 北京市 3D 地图</title>
+
+    <!-- Cesium 样式 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cesium@1.101/Build/Cesium/cesium.min.css">
+
+    <!-- Cesium JS -->
+    <script src="https://cdn.jsdelivr.net/npm/cesium@1.101/Build/Cesium/Cesium.js"></script>
+
+
+    <style>
+        /* 设置地图容器大小 */
+        #cesiumContainer {
+            width: 100%;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+
+<div id="cesiumContainer"></div>
+
+<script>
+    // 设置 Cesium Ion Access Token
+    Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJiNDljOGNlMS1mNTllLTRkODMtYTU1My1lMzhhMDZiZWZlZDUiLCJpZCI6MjYzMzkxLCJpYXQiOjE3MzQ1MzI2NjF9.FOibYRtbEs79EVt6ck2toEjfCFWPe99mjWNXqFrNoIU';
+    // 初始化 Cesium Viewer
+    const viewer = new Cesium.Viewer('cesiumContainer', {
+        imageryProviderViewModel: new Cesium.IonImageryProvider({ assetId: 2 }), // 使用 Cesium 默认的影像图层
+        terrainProviderViewModel: new Cesium.CesiumTerrainProvider({
+            url : 'https://assets.ion.cesium.com/1' // 使用 Cesium 地形服务
+        }),
+        shouldAnimate: true
+    });
+
+    // 设置地图的初始视角（北京市的经纬度和适当的缩放级别）
+    viewer.camera.setView({
+        destination: Cesium.Cartesian3.fromDegrees(116.4074, 39.9042, 2000), // 北京市经纬度，缩放级别适当调整
+        orientation: {
+            heading : Cesium.Math.toRadians(0.0),  // 偏航角，控制方向
+            pitch : Cesium.Math.toRadians(-30.0),  // 俯仰角，控制视角的上下
+            roll : 0.0                            // 滚转角
+        }
+    });
+
+    // 添加3D建筑物（例如默认的建筑物模型）
+    viewer.scene.globe.enableLighting = true; // 启用光照效果
+</script>
+
+</body>
+</html>
