@@ -1,7 +1,7 @@
 import L, { Map, Marker } from 'leaflet';
 import {ref} from "vue"; //四川省雨量图
-let customLayer: Layer | null = null; // 用于存储自定义图层
-let defaultLayer: Layer | null = null;
+let customLayer: Layer | null = null; // 四川雨量图图层
+let defaultLayer: Layer | null = null; // 四川边界图层
 const isLayerAdded = ref(false); // 控制图层显示/隐藏的状态
 // 添加自定义按钮，方便功能调试 !>>
 // 定义按钮信息
