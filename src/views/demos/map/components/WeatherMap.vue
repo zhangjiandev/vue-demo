@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h2>四川市边界展示</h2>
-    <div id="map" style="height: 600px;"></div>
+<!--    <h2>四川市边界展示</h2>-->
+    <div id="map" style="height: 800px;"></div>
   </div>
 </template>
 
@@ -47,7 +47,7 @@ const initMap = async () => {
   //const map = L.map("map").setView([30.5728, 104.0668], 3); // 设置北京为中心
   map.value = L.map("map", {
     center: [30.5728, 104.0668], // 中心点
-    zoom: 7, // 当前展示的层级
+    zoom: 6, // 当前展示的层级
     maxZoom: 18, // 最大层级
     minZoom: 1, // 最小层级
     attributionControl: false, // 不展示版权信息
@@ -124,15 +124,16 @@ const initMap = async () => {
   //   heatLayerElement.style.zIndex = '650'; // 将 z-index 设置为较高的值
   // }
   //添加北京市边界
-  let geojson = L.geoJSON(beijingGeoJSON.value, {
-    style: {
-      color: "#BCBAC0", // 边界线颜色
-      weight: 1, // 边界线宽度
-      fillColor: "#b0afea", // 填充颜色
-      fillOpacity: 0.5, // 填充透明度
-    },
-    //onEachFeature: onEachFeature
-  }).addTo(map.value);
+  // let geojson = L.geoJSON(beijingGeoJSON.value, {
+  //   style: {
+  //     color: "#BCBAC0", // 边界线颜色
+  //     weight: 1, // 边界线宽度
+  //     fillColor: "#fdfd86", // 填充颜色
+  //     //fillColor: "#b0afea", // 填充颜色
+  //     fillOpacity: 0.5, // 填充透明度
+  //   },
+  //   //onEachFeature: onEachFeature
+  // }).addTo(map.value);
 
   // 限制地图范围为四川省
   map.value.setMaxBounds(SICHUAN_BOUNDS);
@@ -276,7 +277,7 @@ const initMap = async () => {
     } else {
       // 重置为初始状态，返回到初始的缩放级别和中心
       zoomLevel.value = 0;
-      map.value.setView([30.5728, 104.0668], 7); // 返回到初始的缩放级别
+      map.value.setView([30.5728, 104.0668], 6); // 返回到初始的缩放级别
     }
   };
   map.value.on('click', (e) => {
@@ -378,7 +379,8 @@ const createCustomControl = () => {
 onMounted(() => {
   initMap();
   // 添加自定义控件
-  const customControl = weatherCustom.createCustomControl01(map);
+  //const customControl =
+  weatherCustom.createCustomControl01(map);
   //map.value.addControl(customControl);
 });
   //},
@@ -386,13 +388,14 @@ onMounted(() => {
 </script>
 
 <style scoped>
-#map { height: 600px; }
+#map { height: 800px; }
 .leaflet-bar {
   background-color: white;
   border-radius: 5px;
   box-shadow: 0px 2px 6px rgba(0,0,0,0.3);
 }
 .leaflet-control-custom {
+  //background-color: #21fcfc;
   background-color: #007bff;
   color: white;
   border: none;
